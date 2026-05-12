@@ -363,3 +363,10 @@ FUNÇÃO autenticar(email, senha)
 5. Suporte a usuários
 
 # Acessando Atividade Completa e código fonte
+
+Toda a atividade e o código fonte estão disponíveis em:
+
+[Link GitHub](https://github.com/alexandregomes3112/hb-Mod1_a1_atv1.git)
+
+
+# Ficaria honrado em obter o feedback !
