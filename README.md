@@ -112,22 +112,16 @@ Password:
 
 ## 🎓 Conceitos Aplicados
 
-✅ SDLC (Software Development Life Cycle)
-✅ Modelos de Dados Relacionais
-✅ Autenticação e Autorização
-✅ Validação de Negócio
-✅ MVC (Model-View-Controller)
-✅ Segurança Web
-✅ Design Responsivo
-✅ Testes Sistemáticos
+- ✅ SDLC (Software Development Life Cycle)
+- ✅ Modelos de Dados Relacionais
+- ✅ Autenticação e Autorização
+- ✅ Validação de Negócio
+- ✅ MVC (Model-View-Controller)
+- ✅ Segurança Web
+- ✅ Design Responsivo
+- ✅ Testes Sistemáticos
 
 ---
-
-### Explorar o Código
-- Modelos: `sistema_reservas/reservas/models.py`
-- Lógica: `sistema_reservas/reservas/views.py`
-- Templates: `sistema_reservas/reservas/templates/`
-
 
 ## 🔧 Requisitos Técnicos
 
