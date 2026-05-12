@@ -2,7 +2,7 @@
 
 > **Atividade Prática - Aplicando o SDLC**
 > 
-> Um sistema profissional de reserva de salas desenvolvido com Django e SQLite, incluindo documentação SDLC completa.
+> Um sistema de reserva de salas desenvolvido com Django e SQLite, incluindo documentação SDLC completa. Focado na funcionalidade e entrega do projeto, ignorando completamente funcionalidades adicionais ou UI/UX.
 
 ---
 
@@ -14,8 +14,7 @@
 ├── PASSO_2_PAPEIS_RESPONSABILIDADES.md # 9 papéis profissionais
 ├── PASSO_3_REQUISITOS.md               # 15 requisitos levantados
 ├── PASSO_4_DESIGN_IMPLEMENTACAO.md     # Design + Protótipos + Pseudocódigo
-├── PASSO_5_TESTES.md                   # 50+ Casos de teste
-└── RELATORIO_FINAL_PASSO4.html         # Relatório Executivo (2 pág)
+└── PASSO_5_TESTES.md                   # 50+ Casos de teste
 ```
 
 ### ✅ Sistema Django Funcional
