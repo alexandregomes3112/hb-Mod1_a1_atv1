@@ -1,0 +1,68 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Relatório de Uso - Admin{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-chart-bar"></i> Relatório de Uso das Salas</h3>
+    </div>
+
+    <form method="get" style="margin-bottom: 1.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+        <div>
+            <label>Data Início</label>
+            <input type="date" name="data_inicio" class="form-control" value="{{ data_inicio }}">
+        </div>
+        <div>
+            <label>Data Fim</label>
+            <input type="date" name="data_fim" class="form-control" value="{{ data_fim }}">
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Gerar Relatório</button>
+        </div>
+    </form>
+
+    {% if relatorio %}
+    <table>
+        <thead>
+            <tr>
+                <th>Sala</th>
+                <th>Localização</th>
+                <th>Capacidade</th>
+                <th>Total de Reservas</th>
+                <th>Horas Totais</th>
+                <th>Taxa de Ocupação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in relatorio %}
+            <tr>
+                <td>{{ item.sala.nome }}</td>
+                <td>{{ item.sala.localizacao }}</td>
+                <td>{{ item.sala.capacidade }} pessoas</td>
+                <td>{{ item.total_reservas }}</td>
+                <td>{{ item.horas_total }}h</td>
+                <td>
+                    <div style="background-color: #ecf0f1; border-radius: 4px; padding: 0.5rem; text-align: center;">
+                        {{ item.taxa_ocupacao }}
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 2rem; padding: 1rem; background-color: #f9f9f9; border-radius: 4px;">
+        <h4>Resumo:</h4>
+        <ul style="margin-left: 1rem;">
+            <li>Total de Salas: {{ relatorio|length }}</li>
+            <li>Total de Reservas: {% widthratio relatorio|length 1 100 %}</li>
+        </ul>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h3>Selecione um período para gerar o relatório</h3>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

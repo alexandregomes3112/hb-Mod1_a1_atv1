@@ -1,0 +1,123 @@
+# =========================================================
+# Python
+# =========================================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache/
+pytest_cache/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# =========================================================
+# Django
+# =========================================================
+
+# Django secret key / local settings
+local_settings.py
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Django media/static
+media/
+staticfiles/
+
+# Django migrations cache
+*.mo
+*.pot
+
+# Collectstatic
+static/
+
+# =========================================================
+# SQLite
+# =========================================================
+*.sqlite3
+*.db
+
+# =========================================================
+# Docker
+# =========================================================
+
+# Docker compose overrides
+docker-compose.override.yml
+
+# Docker volumes / local persistence
+docker-data/
+volumes/
+
+# Docker env files
+docker.env
+
+# =========================================================
+# Gunicorn / Uvicorn
+# =========================================================
+gunicorn.pid
+
+# =========================================================
+# Celery
+# =========================================================
+celerybeat-schedule
+celerybeat.pid
+
+# =========================================================
+# mypy / lint
+# =========================================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ruff / Black
+.ruff_cache/
+
+# =========================================================
+# Jupyter
+# =========================================================
+.ipynb_checkpoints/
+
+# =========================================================
+# Temporary files
+# =========================================================
+tmp/
+temp/
+*.swp
+*.swo

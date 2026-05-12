@@ -1,0 +1,57 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Cancelar Reserva - Admin{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-times-circle"></i> Cancelar Reserva</h3>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        <h4>Informações da Reserva:</h4>
+        <table style="margin-top: 1rem;">
+            <tr>
+                <td style="font-weight: bold; width: 150px;">Usuário:</td>
+                <td>{{ reserva.usuario.first_name }} ({{ reserva.usuario.email }})</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Sala:</td>
+                <td>{{ reserva.sala.nome }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Data:</td>
+                <td>{{ reserva.data_reserva|date:"d/m/Y" }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Horário:</td>
+                <td>{{ reserva.hora_inicio|time:"H:i" }} - {{ reserva.hora_fim|time:"H:i" }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Motivo:</td>
+                <td>{{ reserva.motivo }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="alert alert-warning">
+        <i class="fas fa-exclamation-triangle"></i> Você tem certeza que deseja cancelar esta reserva? Um email será enviado ao usuário.
+    </div>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="motivo_cancelamento">Motivo do Cancelamento</label>
+            <textarea name="motivo_cancelamento" class="form-control" rows="4" placeholder="Motivo (opcional)"></textarea>
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-check"></i> Cancelar Reserva
+            </button>
+            <a href="{% url 'todas_reservas' %}" class="btn btn-secondary">Voltar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

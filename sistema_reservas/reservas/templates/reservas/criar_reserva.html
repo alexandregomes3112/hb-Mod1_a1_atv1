@@ -1,0 +1,86 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Criar Reserva - Sistema de Reservas{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-calendar-plus"></i> Fazer uma Reserva</h3>
+    </div>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+            {{ error }}<br>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="{{ form.sala.id_for_label }}">{{ form.sala.label }}</label>
+            {{ form.sala }}
+            {% if form.sala.errors %}
+            <small style="color: #e74c3c;">{{ form.sala.errors.0 }}</small>
+            {% endif %}
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="{{ form.data_reserva.id_for_label }}">{{ form.data_reserva.label }}</label>
+                {{ form.data_reserva }}
+                {% if form.data_reserva.errors %}
+                <small style="color: #e74c3c;">{{ form.data_reserva.errors.0 }}</small>
+                {% endif %}
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="{{ form.hora_inicio.id_for_label }}">{{ form.hora_inicio.label }}</label>
+                {{ form.hora_inicio }}
+                {% if form.hora_inicio.errors %}
+                <small style="color: #e74c3c;">{{ form.hora_inicio.errors.0 }}</small>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.hora_fim.id_for_label }}">{{ form.hora_fim.label }}</label>
+                {{ form.hora_fim }}
+                {% if form.hora_fim.errors %}
+                <small style="color: #e74c3c;">{{ form.hora_fim.errors.0 }}</small>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.motivo.id_for_label }}">{{ form.motivo.label }}</label>
+            {{ form.motivo }}
+            {% if form.motivo.errors %}
+            <small style="color: #e74c3c;">{{ form.motivo.errors.0 }}</small>
+            {% endif %}
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-check"></i> Reservar
+            </button>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        <h3 class="card-title">Informações Úteis</h3>
+    </div>
+    <ul style="margin-left: 1rem;">
+        <li>Duração mínima de reserva: 15 minutos</li>
+        <li>Você pode cancelar sua reserva com até 2 horas de antecedência</li>
+        <li>Um email de confirmação será enviado para seu cadastro</li>
+        <li>Escolha uma data futura (não é possível reservar para o passado)</li>
+    </ul>
+</div>
+{% endblock %}

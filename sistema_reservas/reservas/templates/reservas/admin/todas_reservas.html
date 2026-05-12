@@ -1,0 +1,81 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Todas as Reservas - Admin{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-list"></i> Todas as Reservas</h3>
+    </div>
+
+    <form method="get" style="margin-bottom: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        {% csrf_token %}
+        <div>
+            <label>Sala</label>
+            {{ form.sala }}
+        </div>
+        <div>
+            <label>Data</label>
+            {{ form.data }}
+        </div>
+        <div>
+            <label>Status</label>
+            {{ form.status }}
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Filtrar</button>
+        </div>
+    </form>
+
+    {% if reservas %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuário</th>
+                <th>Sala</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Motivo</th>
+                <th>Status</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserva in reservas %}
+            <tr>
+                <td>#{{ reserva.id }}</td>
+                <td>{{ reserva.usuario.first_name }}</td>
+                <td>{{ reserva.sala.nome }}</td>
+                <td>{{ reserva.data_reserva|date:"d/m/Y" }}</td>
+                <td>{{ reserva.hora_inicio|time:"H:i" }} - {{ reserva.hora_fim|time:"H:i" }}</td>
+                <td>{{ reserva.motivo }}</td>
+                <td>
+                    {% if reserva.status == 'ativa' %}
+                    <span class="badge badge-success">Ativa</span>
+                    {% elif reserva.status == 'cancelada' %}
+                    <span class="badge badge-danger">Cancelada</span>
+                    {% else %}
+                    <span class="badge badge-info">Concluída</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if reserva.status == 'ativa' %}
+                    <a href="{% url 'cancelar_reserva_admin' reserva.id %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-times"></i>
+                    </a>
+                    {% else %}
+                    <span style="color: #999;">-</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <h3>Nenhuma reserva encontrada</h3>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

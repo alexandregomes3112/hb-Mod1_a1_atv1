@@ -1,0 +1,25 @@
+services:
+  web:
+    build: .
+    container_name: sistema-reservas
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - static_volume:/app/sistema_reservas/staticfiles
+      - db_volume:/app/db
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-your-secret-key-change-in-production
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+    command: python manage.py runserver 0.0.0.0:8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  static_volume:
+  db_volume:

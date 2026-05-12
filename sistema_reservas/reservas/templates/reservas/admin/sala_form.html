@@ -1,0 +1,74 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}{{ titulo }} - Admin{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-door-open"></i> {{ titulo }}</h3>
+    </div>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+            {{ error }}<br>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="{{ form.nome.id_for_label }}">{{ form.nome.label }}</label>
+            {{ form.nome }}
+            {% if form.nome.errors %}
+            <small style="color: #e74c3c;">{{ form.nome.errors.0 }}</small>
+            {% endif %}
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="{{ form.capacidade.id_for_label }}">{{ form.capacidade.label }}</label>
+                {{ form.capacidade }}
+                {% if form.capacidade.errors %}
+                <small style="color: #e74c3c;">{{ form.capacidade.errors.0 }}</small>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.localizacao.id_for_label }}">{{ form.localizacao.label }}</label>
+                {{ form.localizacao }}
+                {% if form.localizacao.errors %}
+                <small style="color: #e74c3c;">{{ form.localizacao.errors.0 }}</small>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.recursos.id_for_label }}">{{ form.recursos.label }}</label>
+            {{ form.recursos }}
+            {% if form.recursos.errors %}
+            <small style="color: #e74c3c;">{{ form.recursos.errors.0 }}</small>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>
+                {{ form.ativa }}
+                {{ form.ativa.label }}
+            </label>
+            {% if form.ativa.errors %}
+            <small style="color: #e74c3c;">{{ form.ativa.errors.0 }}</small>
+            {% endif %}
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Salvar
+            </button>
+            <a href="{% url 'gerenciar_salas' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

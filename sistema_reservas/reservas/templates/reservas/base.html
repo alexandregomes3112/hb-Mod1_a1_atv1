@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de Reserva de Salas{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <nav class="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <a href="{% url 'dashboard' %}" style="font-size: 1.2em; font-weight: bold;">
+                    <i class="fas fa-door-open"></i> Sistema de Reservas
+                </a>
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <a href="{% url 'criar_reserva' %}">Reservar Sala</a>
+                <a href="{% url 'minhas_reservas' %}">Minhas Reservas</a>
+                <a href="{% url 'listar_salas' %}">Salas</a>
+                {% if user.is_staff %}
+                <a href="{% url 'painel_admin' %}">Admin</a>
+                {% endif %}
+            </div>
+            <div class="user-info">
+                <span>{{ user.first_name|default:user.username }}</span>
+                <a href="{% url 'logout' %}" style="margin-left: 2rem;">Sair</a>
+            </div>
+        </div>
+    </nav>
+    {% endif %}
+
+    <div class="container" style="padding-top: 1rem;">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags|default:'info' }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer style="margin-top: 4rem; padding: 2rem; background-color: #f0f0f0; text-align: center; color: #666;">
+        <p>&copy; 2026 Sistema de Reserva de Salas - Atividade Prática SDLC</p>
+    </footer>
+</body>
+</html>

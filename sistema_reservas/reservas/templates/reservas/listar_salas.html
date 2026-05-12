@@ -1,0 +1,54 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Salas Disponíveis - Sistema de Reservas{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-door-open"></i> Salas Disponíveis</h3>
+    </div>
+
+    {% if salas %}
+    <div class="grid">
+        {% for item in salas %}
+        <div class="card">
+            <h3 style="color: #3498db; margin-bottom: 0.5rem;">{{ item.sala.nome }}</h3>
+            <p style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">{{ item.sala.localizacao }}</p>
+
+            <table style="width: 100%; font-size: 0.9rem;">
+                <tr>
+                    <td style="font-weight: bold; padding: 0.25rem 0;">Capacidade:</td>
+                    <td style="padding: 0.25rem 0;">{{ item.sala.capacidade }} pessoas</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 0.25rem 0;">Recursos:</td>
+                    <td style="padding: 0.25rem 0;">{{ item.sala.recursos }}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 0.25rem 0;">Reservas Hoje:</td>
+                    <td style="padding: 0.25rem 0;">
+                        {% if item.reservas_hoje > 0 %}
+                        <span class="badge badge-warning">{{ item.reservas_hoje }}</span>
+                        {% else %}
+                        <span class="badge badge-success">Livre</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+
+            <div style="margin-top: 1rem;">
+                <a href="{% url 'criar_reserva' %}" class="btn btn-primary btn-block">
+                    <i class="fas fa-plus"></i> Reservar
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h3>Nenhuma sala disponível</h3>
+        <p>Entre em contato com o administrador</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

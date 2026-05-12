@@ -1,0 +1,86 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Dashboard - Sistema de Reservas{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
+</div>
+
+<div class="grid">
+    <div class="stat-card">
+        <h3>Próximas Reservas</h3>
+        <div class="number">{{ proximas_reservas|length }}</div>
+    </div>
+    <div class="stat-card">
+        <h3>Total de Reservas Ativas</h3>
+        <div class="number">{{ total_reservas }}</div>
+    </div>
+    <div class="stat-card">
+        <h3>Salas Disponíveis</h3>
+        <div class="number">{{ salas_disponiveis }}</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Próximas Reservas</h3>
+    </div>
+
+    {% if proximas_reservas %}
+    <table>
+        <thead>
+            <tr>
+                <th>Sala</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Motivo</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserva in proximas_reservas %}
+            <tr>
+                <td>{{ reserva.sala.nome }}</td>
+                <td>{{ reserva.data_reserva|date:"d/m/Y" }}</td>
+                <td>{{ reserva.hora_inicio|time:"H:i" }} - {{ reserva.hora_fim|time:"H:i" }}</td>
+                <td>{{ reserva.motivo }}</td>
+                <td>
+                    <a href="{% url 'cancelar_reserva' reserva.id %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-times"></i> Cancelar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <h3>Nenhuma reserva próxima</h3>
+        <p><a href="{% url 'criar_reserva' %}" class="btn btn-primary">Fazer uma reserva</a></p>
+    </div>
+    {% endif %}
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Ações Rápidas</h3>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <a href="{% url 'criar_reserva' %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Nova Reserva
+        </a>
+        <a href="{% url 'minhas_reservas' %}" class="btn btn-primary">
+            <i class="fas fa-list"></i> Minhas Reservas
+        </a>
+        <a href="{% url 'listar_salas' %}" class="btn btn-primary">
+            <i class="fas fa-door-open"></i> Ver Salas
+        </a>
+        {% if user.is_staff %}
+        <a href="{% url 'painel_admin' %}" class="btn btn-secondary">
+            <i class="fas fa-cog"></i> Painel Admin
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
