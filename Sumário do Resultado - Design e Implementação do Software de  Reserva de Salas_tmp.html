@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sumário do Resultado - Design e Implementação do Software de  Reserva de Salas.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="sumário-do-resultado---design-e-implementação-do-software-de--reserva-de-salas">Sumário do Resultado - Design e Implementação do Software de  Reserva de Salas</h2>
+<p><strong>Autor:</strong> Alexandre Gomes   <strong>Data:</strong> 13/05/2026</p>
+<h3 id="passo-1-identificação-das-fases-do-sdlc">Passo 1: Identificação das fases do SDLC</h3>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Atividades no projeto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Levantamento de Requisitos</td>
+<td>Identificar as necessidades dos usuarios e administradores, como login, reserva de salas, listagem e cancelamento por admin.</td>
+</tr>
+<tr>
+<td>Analise</td>
+<td>Avaliar regras de negocio, restricoes e riscos, principalmente conflitos de horario, perfis de acesso e seguranca dos dados.</td>
+</tr>
+<tr>
+<td>Design</td>
+<td>Definir arquitetura, telas, modelo de dados e fluxo do sistema antes da codificacao.</td>
+</tr>
+<tr>
+<td>Implementacao</td>
+<td>Desenvolver autenticacao, cadastro de salas, criacao de reservas, listagem e cancelamento.</td>
+</tr>
+<tr>
+<td>Testes</td>
+<td>Validar login, reservas validas, reservas com conflito, permissoes de admin e exibicao correta das reservas.</td>
+</tr>
+<tr>
+<td>Implantacao</td>
+<td>Preparar o ambiente, configurar banco de dados e disponibilizar o acesso aos usuarios.</td>
+</tr>
+<tr>
+<td>Manutencao</td>
+<td>Corrigir falhas, monitorar o uso, melhorar funcionalidades e adaptar o sistema a novas necessidades.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="passo-2-definição-dos-papéis-e-responsabilidades">Passo 2. Definição dos papéis e responsabilidades</h3>
+<table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Responsabilidades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product Owner</td>
+<td>Define prioridades, valida requisitos e garante que o sistema atenda as necessidades dos usuarios.</td>
+</tr>
+<tr>
+<td>Analista de Requisitos</td>
+<td>Coleta, organiza e documenta requisitos funcionais e nao funcionais.</td>
+</tr>
+<tr>
+<td>Arquiteto de Software</td>
+<td>Define a estrutura tecnica da solucao, incluindo camadas, tecnologias e banco de dados.</td>
+</tr>
+<tr>
+<td>Designer UX/UI</td>
+<td>Cria o fluxo das telas e busca uma interface simples, clara e facil de usar.</td>
+</tr>
+<tr>
+<td>Desenvolvedor Backend</td>
+<td>Implementa regras de negocio, autenticacao, permissoes, reservas e validacao de conflitos.</td>
+</tr>
+<tr>
+<td>Desenvolvedor Frontend</td>
+<td>Desenvolve as telas de login, reserva, listagem e painel administrativo.</td>
+</tr>
+<tr>
+<td>Testador/QA</td>
+<td>Planeja e executa testes para validar funcionalidades, seguranca, permissoes e conflitos.</td>
+</tr>
+<tr>
+<td>DevSecOps</td>
+<td>Apoia implantacao, automacao, monitoramento e boas praticas de seguranca.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="passo-3-levantamento-de-requisitos-do-software">Passo 3: Levantamento de requisitos do software</h3>
+<table>
+<thead>
+<tr>
+<th>Requisitos funcionais</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autenticacao de usuarios</td>
+<td>Permitir login com email e senha, diferenciando usuarios comuns e administradores.</td>
+</tr>
+<tr>
+<td>Reserva de salas</td>
+<td>Permitir que usuarios reservem uma sala informando data, horario de inicio, horario de fim e motivo.</td>
+</tr>
+<tr>
+<td>Gerenciamento de conflitos</td>
+<td>Impedir reservas duplicadas para a mesma sala no mesmo intervalo de horario.</td>
+</tr>
+<tr>
+<td>Listagem de reservas</td>
+<td>Permitir que usuarios comuns vejam suas reservas e administradores vejam todas.</td>
+</tr>
+<tr>
+<td>Cancelamento de reservas</td>
+<td>Permitir cancelamento apenas por usuarios administradores, mantendo historico da acao.</td>
+</tr>
+<tr>
+<td>Notificacoes por email</td>
+<td>Enviar confirmacoes de reserva e avisos de cancelamento aos usuarios envolvidos.</td>
+</tr>
+<tr>
+<td>Gerenciamento de salas</td>
+<td>Permitir que administradores cadastrem, editem e desativem salas.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Requisitos nao funcionais</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seguranca</td>
+<td>Armazenar senhas com criptografia, proteger sessoes e validar permissoes de acesso.</td>
+</tr>
+<tr>
+<td>Usabilidade</td>
+<td>Oferecer interface simples, com mensagens claras para sucesso, erro e conflito de horario.</td>
+</tr>
+<tr>
+<td>Desempenho</td>
+<td>Consultar disponibilidade e listar reservas de forma rapida, mesmo com muitos registros.</td>
+</tr>
+<tr>
+<td>Disponibilidade</td>
+<td>Manter o sistema acessivel durante o horario de uso da empresa.</td>
+</tr>
+<tr>
+<td>Auditoria</td>
+<td>Registrar operacoes importantes, como criacao e cancelamento de reservas.</td>
+</tr>
+<tr>
+<td>Manutenibilidade</td>
+<td>Organizar o codigo em camadas e manter documentacao para facilitar futuras melhorias.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="passo-4-design-e-implementacao-do-software">Passo 4: Design e implementacao do software</h3>
+<h4 id="41-esboco-da-interface">4.1 Esboco da Interface</h4>
+<pre class="hljs"><code><div>SISTEMA DE RESERVA DE SALAS
+
+[Tela de Login]
+Email: [________________]   Senha: [________________]   [Entrar]
+
+[Tela Principal]
+Usuario: Alexandre                 Perfil: Admin
+------------------------------------------------
+[Nova Reserva] [Minhas Reservas] [Painel Admin]
+
+Nova Reserva:
+Sala:        [Sala A v]
+Data:        [13/05/2026]
+Inicio/Fim:  [14:00] ate [15:00]
+Motivo:      [Reuniao de projeto] [Reservar]
+
+Minhas Reservas:
+Sala A | 13/05/2026 | 14:00-15:00 | Ativa
+
+Painel Admin:
+Usuario | Sala | Data/Hora        | Status | Acao
+Joao    | A    | 13/05 14:00-15:00| Ativa  | [Cancelar]
+</div></code></pre>
+<h4 id="42-componentes-do-programa">4.2 Componentes do Programa</h4>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Funcao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Login</td>
+<td>Autentica o usuario e identifica seu perfil: comum ou admin.</td>
+</tr>
+<tr>
+<td>Nova Reserva</td>
+<td>Permite escolher sala, data, horario e motivo da reuniao.</td>
+</tr>
+<tr>
+<td>Minhas Reservas</td>
+<td>Lista as reservas do usuario autenticado.</td>
+</tr>
+<tr>
+<td>Painel Admin</td>
+<td>Exibe todas as reservas e permite cancelamento pelo administrador.</td>
+</tr>
+<tr>
+<td>Banco de Dados</td>
+<td>Guarda usuarios, salas, reservas e historico de acoes.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="43-regra-principal-em-pseudocodigo">4.3 Regra principal em pseudocodigo</h4>
+<pre class="hljs"><code><div>FUNCAO verificarDisponibilidade(sala, data, inicio, fim)
+    reservas = buscarReservasAtivas(sala, data)
+
+    PARA CADA reserva EM reservas
+        SE inicio &lt; reserva.hora_fim E fim &gt; reserva.hora_inicio
+            RETORNAR falso
+        FIM SE
+    FIM PARA
+
+    RETORNAR verdadeiro
+FIM FUNCAO
+
+FUNCAO reservarSala(usuario, sala, data, inicio, fim)
+    SE verificarDisponibilidade(sala, data, inicio, fim) = falso
+        RETORNAR &quot;Sala indisponivel neste horario&quot;
+    FIM SE
+
+    salvarReserva(usuario, sala, data, inicio, fim)
+    RETORNAR &quot;Reserva criada com sucesso&quot;
+FIM FUNCAO
+</div></code></pre>
+<h3 id="passo-5-testes-do-software">Passo 5: Testes do software</h3>
+<table>
+<thead>
+<tr>
+<th>Cenario de teste</th>
+<th>O que sera validado</th>
+<th>Resultado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Login valido</td>
+<td>Usuario informa email e senha corretos.</td>
+<td>Acesso liberado conforme o perfil do usuario.</td>
+</tr>
+<tr>
+<td>Login invalido</td>
+<td>Usuario informa credenciais incorretas.</td>
+<td>Sistema bloqueia o acesso e exibe mensagem de erro.</td>
+</tr>
+<tr>
+<td>Reserva valida</td>
+<td>Usuario reserva uma sala disponivel em data e horario validos.</td>
+<td>Reserva criada com status ativa.</td>
+</tr>
+<tr>
+<td>Reserva com conflito</td>
+<td>Usuario tenta reservar sala ja ocupada no mesmo horario.</td>
+<td>Sistema impede a reserva e informa indisponibilidade.</td>
+</tr>
+<tr>
+<td>Listagem do usuario</td>
+<td>Usuario comum acessa suas reservas.</td>
+<td>Apenas suas proprias reservas sao exibidas.</td>
+</tr>
+<tr>
+<td>Listagem do admin</td>
+<td>Administrador acessa o painel administrativo.</td>
+<td>Todas as reservas do sistema sao exibidas.</td>
+</tr>
+<tr>
+<td>Cancelamento por admin</td>
+<td>Administrador cancela uma reserva existente.</td>
+<td>Reserva muda para cancelada e a acao e registrada.</td>
+</tr>
+<tr>
+<td>Cancelamento por usuario comum</td>
+<td>Usuario comum tenta cancelar reserva pelo painel admin.</td>
+<td>Sistema nega a acao por falta de permissao.</td>
+</tr>
+<tr>
+<td>Notificacao por email</td>
+<td>Reserva ou cancelamento e realizado.</td>
+<td>Usuario recebe mensagem de confirmacao ou cancelamento.</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
